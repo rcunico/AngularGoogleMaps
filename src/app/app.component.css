@@ -3,3 +3,30 @@
     height: 100vh;
     background-color: blueviolet;
 }
+
+#filterDiv {
+  float: left;
+  width: 20%;
+  background-color:blue;
+  height: 600px;
+  display: block;
+  transition: 0.5s;
+}
+
+#mainDiv {
+  width:100%;
+  background-color:lavenderblush;
+  transition: margin-left .5s;
+  z-index: 2;
+
+}
+
+#hideShowDiv {
+  float: right;
+  margin-right: 5px;
+  background:url(../assets/Hamburger_icon.svg.png) no-repeat;
+  height:30px;
+  width:30px;
+  background-size: 50px auto;
+  background-size: 100%;
+}
