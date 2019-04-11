@@ -1,0 +1,37 @@
+<mat-sidenav-container class="sidenav-container">
+  <mat-sidenav 
+    #drawer class="sidenav" 
+    fixedInViewport="false"
+    [attr.role]="(isHandset$ | async) ? 'dialog' : 'navigation'"
+    [mode]="(isHandset$ | async) ? 'over' : 'side'"
+    [opened]="!(isHandset$ | async)">
+    <mat-toolbar>Data</mat-toolbar>
+    <mat-nav-list>
+      <ul style="list-style-type: none">
+        <li><input type="checkbox" value="cat1">Category 1</li>
+        <li><input type="checkbox" value="cat2">Category 2</li>
+        <li><input type="checkbox" value="cat3">Category 3</li>
+        <li><input type="checkbox" value="cat4">Category 4</li>
+      </ul>
+      <div style="text-align:center">
+          <button mat-raised-button style="background-color:green">Apply</button>
+      </div>
+    </mat-nav-list>
+  </mat-sidenav>
+  <mat-sidenav-content>
+    <mat-toolbar>
+        <button
+          type="button"
+          aria-label="Toggle sidenav"
+          mat-icon-button
+          (click)="drawer.toggle()">
+          <!-- *ngIf="isHandset$ | async"> -->
+          <mat-icon aria-label="Side nav toggle icon">menu</mat-icon>
+        </button>
+        <div id="title">GGC's Data on Display</div>
+        <div id="logo" style="float:right"><img src="assets/logo.png" alt=""></div>
+      </mat-toolbar>
+    <!-- Add Content Here -->
+    <app-comp-agm-map></app-comp-agm-map>
+  </mat-sidenav-content>
+</mat-sidenav-container>

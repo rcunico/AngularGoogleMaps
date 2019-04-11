@@ -12,8 +12,9 @@ import { google } from '@agm/core/services/google-maps-types';
 export class CompAgmMapComponent implements OnInit {
 
   @ViewChild('AgmMap') agmMap: AgmMap;
-  lat: number = 51.678418;
-  lng: number = 7.809007;
+  lat: number = 33.979984;
+  lng: number = -84.0066296;
+  zoom: number = 12;
   locationChosen = false;
 
   addMarker(event) {
