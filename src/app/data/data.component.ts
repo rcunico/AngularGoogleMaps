@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, Input } from '@angular/core';
 import { dashCaseToCamelCase } from '@angular/animations/browser/src/util';
 import { DebugContext } from '@angular/core/src/view';
 import { ArrayDataSource } from '@angular/cdk/collections';
@@ -13,62 +13,43 @@ export class DataComponent implements OnInit {
   data: any[];
   jsonString = '[{"cat": "place", "name": "test1"},{"cat": "person", "name": "test2"},{"cat": "place", "name": "test3"},{"cat": "person", "name": "test4"}]';
 
-  dataMap: Map<any, any>;
-  catSet: Set<String>;
-  dataList: Array<any>;
+  @Input() dataMap: Map<any, any>;
+  categories: String[];
 
   constructor() {
     this.data = JSON.parse(this.jsonString);
-
-    // this.dataMap = new Map<String, String>(
-    //   this.data.map(x => [x.cat, x.name] as [String, String])
-    // );
-
-    this.catSet = new Set<String>();
     this.dataMap = new Map<String, Array<any>>();
-    this.dataList = new Array<Array<Object>>();
 
-    this.createCatSet();
-    this.createDataList();
-    // this.createDataMap();
+    this.createCategories();
+    this.createDataMap();
   }
 
-  createCatSet() {
-    for (let element of this.data) {
-      this.catSet.add(element.cat);
-    }
-  }
-
-  createDataList() {
-    for (let element of Array.from(this.catSet.values())) {
-      this.dataList.push(new Array<Object>());
-    }
-
-    this.dataMap.set("person", new Array());
-    this.dataMap.set("place", new Array());
-
+  createCategories() {
+    let catSet = new Set<String>();
 
     for (let element of this.data) {
-      this.dataMap.get(element.cat).push(element);
-      console.log(this.dataMap.get(element.cat));
+      catSet.add(element.cat);
     }
-  }
 
-  findIndex(category) {
-    let catArray = Array.from(this.catSet.values());
-    return catArray.indexOf(category);
+    this.categories = Array.from(catSet);
   }
 
   createDataMap() {
-    
+    // Create new element of dataMap with the key being a category from the categories array
+    for (let element of this.categories) {
+      this.dataMap.set(element, new Array());
+    }
+
+    // Loop through each element in data array and push element to map element that corresponds to element's cat
+    for (let element of this.data) {
+      this.dataMap.get(element.cat).push(element);
+    }
   }
 
   ngOnInit() {
     console.log(this.data);
-    console.log(this.catSet);
-    console.log(this.dataList);
+    console.log(this.categories);
     console.log(this.dataMap);
-
   }
 
 }
