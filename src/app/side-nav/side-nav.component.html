@@ -9,7 +9,7 @@
     <mat-nav-list>
       <table cellspacing="10" style="margin:auto">
         <tr *ngFor="let element of dataCategories; index as i">
-          <td><mat-checkbox (change)="toggleVisibility(element)">{{ element }}</mat-checkbox></td>
+          <td><mat-checkbox [checked]="true" (change)="toggleVisibility(element)">{{ element }}</mat-checkbox></td>
         </tr>
       </table>
     </mat-nav-list>
@@ -28,7 +28,10 @@
         <div id="logo" style="float:right"><img src="assets/logo.png" alt=""></div>
       </mat-toolbar>
     <!-- Add Content Here -->
-    <app-comp-agm-map [mapDataList]='dataList'></app-comp-agm-map>
+    <app-comp-agm-map 
+      [mapDataList]='dataList'
+      [categories]='dataCategories'>
+    </app-comp-agm-map>
     <!-- <app-data></app-data> -->
   </mat-sidenav-content>
 </mat-sidenav-container>

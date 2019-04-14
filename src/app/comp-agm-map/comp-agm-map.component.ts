@@ -12,7 +12,9 @@ import { google } from '@agm/core/services/google-maps-types';
 export class CompAgmMapComponent implements OnInit {
 
   @Input() mapDataList: any[];
+  @Input() categories: String[];
   markerList: CustomMarker[];
+  markerMap: Map<any, any>;
   
   lat: number = 33.979984;
   lng: number = -84.0066296;
@@ -27,6 +29,7 @@ export class CompAgmMapComponent implements OnInit {
 
   constructor() {
     this.markerList = new Array();
+    this.markerMap = new Map<String, Array<any>>();
   }
 
   ngOnInit() {
@@ -36,16 +39,29 @@ export class CompAgmMapComponent implements OnInit {
       this.markerList.push(new CustomMarker(element));
     })
     console.log(this.markerList);
+
+    this.createMarkerMap();
+    console.log(this.markerMap);
   }
 
-  ngAfterViewInit() {
-    //let bounds = new google.maps.LatLngBounds();
+  createMarkerMap() {
+    for (let element of this.categories) {
+      this.markerMap.set(element, new Array<CustomMarker>());
+    }
+
+    for (let element of this.markerList) {
+      this.markerMap.get(element.category).push(element);
+    }
   }
 
   toggleVisibility(category: String) {
-    this.markerList.forEach((element) => {
-      (element.category === category ? element.visible = !element.visible : element.visible = element.visible)
-    })
+    // this.markerList.forEach((element) => {
+    //   (element.category === category ? element.visible = !element.visible : element.visible = element.visible)
+    // })
+
+    for (let element of this.markerMap.get(category)) {
+      element.visible = !element.visible;
+    }
   }
 
 }
