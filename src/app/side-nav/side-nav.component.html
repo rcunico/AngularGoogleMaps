@@ -28,9 +28,14 @@
             <td></td>
           </tr>
       </table>
-      <table>
+      <!-- <table>
         <tr *ngFor="let category of dataMap | keyvalue">
-          <td> {{ category.key }} </td>
+          <td *ngFor="let element of category.value"><mat-checkbox (change)="someEvent(element.cat)">{{ element.name }}</mat-checkbox></td>
+        </tr>
+      </table> -->
+      <table>
+        <tr *ngFor="let element of dataList; index as i">
+          <td><mat-checkbox>{{ element.cat }} {{ element.lat }} {{ element.lng }}</mat-checkbox></td>
         </tr>
       </table>
     </mat-nav-list>
@@ -49,7 +54,7 @@
         <div id="logo" style="float:right"><img src="assets/logo.png" alt=""></div>
       </mat-toolbar>
     <!-- Add Content Here -->
-    <app-comp-agm-map></app-comp-agm-map>
+    <app-comp-agm-map [mapDataList]='dataList'></app-comp-agm-map>
     <!-- <app-data></app-data> -->
   </mat-sidenav-content>
 </mat-sidenav-container>

@@ -1,4 +1,4 @@
-import { Component, OnInit, ViewChild, HostListener } from '@angular/core';
+import { Component, OnInit, ViewChild, HostListener, Input } from '@angular/core';
 import { AgmMap} from '@agm/core';
 import { google } from '@agm/core/services/google-maps-types';
 
@@ -11,7 +11,9 @@ import { google } from '@agm/core/services/google-maps-types';
 })
 export class CompAgmMapComponent implements OnInit {
 
-  @ViewChild('AgmMap') agmMap: AgmMap;
+  @Input() mapDataList: any[];
+  markerList: customMarker[];
+  
   lat: number = 33.979984;
   lng: number = -84.0066296;
   zoom: number = 12;
@@ -23,11 +25,28 @@ export class CompAgmMapComponent implements OnInit {
     this.locationChosen = true;
   }
 
+  constructor() {
+    this.markerList = new Array();
+  }
+
   ngOnInit() {
+    console.log(this.mapDataList)
+
+    this.mapDataList.forEach((element) => {
+      this.markerList.push(element);
+    })
+    console.log(this.markerList);
   }
 
   ngAfterViewInit() {
     //let bounds = new google.maps.LatLngBounds();
   }
 
+}
+
+interface customMarker {
+  category: String;
+  lat: number;
+  lng: number;
+  visible: boolean;
 }

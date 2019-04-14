@@ -14,6 +14,7 @@ export class SideNavComponent {
   checked = false;
 
   data: DataComponent;
+  dataList: any[];
   dataMap: Map<any, any>;
 
   isHandset$: Observable<boolean> = this.breakpointObserver.observe(Breakpoints.Handset)
@@ -23,8 +24,16 @@ export class SideNavComponent {
 
   constructor(private breakpointObserver: BreakpointObserver) {
     this.data = new DataComponent();
+    this.dataList = this.data.data;
     this.dataMap = this.data.dataMap;
-    console.log(this.dataMap);
+    console.log(this.dataList);
   }
 
+  someEvent(category) {
+    console.log(this.dataMap.get(category));
+  }
+
+  toggleVisibility(index) {
+    
+  }
 }

@@ -11,9 +11,9 @@ import { ArrayDataSource } from '@angular/cdk/collections';
 export class DataComponent implements OnInit {
 
   data: any[];
-  jsonString = '[{"cat": "place", "name": "test1"},{"cat": "person", "name": "test2"},{"cat": "place", "name": "test3"},{"cat": "person", "name": "test4"}]';
+  jsonString = '[{"cat": "place", "lat": 33.00, "lng": -84.00},{"cat": "person", "lat": 33.25, "lng": -84.25},{"cat": "place", "lat": 33.50, "lng": -84.50},{"cat": "person", "lat": 33.75, "lng": -84.75}]';
 
-  @Input() dataMap: Map<any, any>;
+  dataMap: Map<any, any>;
   categories: String[];
 
   constructor() {
