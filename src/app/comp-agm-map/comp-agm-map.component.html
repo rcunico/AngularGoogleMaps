@@ -7,5 +7,5 @@
     *ngIf="locationChosen">
   </agm-marker> -->
   <!-- <app-data></app-data> -->
-  <agm-marker *ngFor="let mark of markerList" [latitude]="mark.lat" [longitude]="mark.lng" [visible]="visible"></agm-marker>  
+  <agm-marker *ngFor="let mark of markerList" [latitude]="mark.lat" [longitude]="mark.lng" [visible]="mark.visible"></agm-marker>  
 </agm-map>

@@ -8,34 +8,8 @@
     <mat-toolbar>Data</mat-toolbar>
     <mat-nav-list>
       <table cellspacing="10" style="margin:auto">
-          <tr>
-            <td><mat-checkbox class="example-margin" [(ngModel)]="checked1">Category 1</mat-checkbox></td>
-            <td>{{ checked1 }}</td>
-          </tr>
-          <tr>
-            <td><mat-checkbox class="example-margin" [(ngModel)]="checked2">Category 2</mat-checkbox></td>
-          </tr>
-          <tr>
-            <td><mat-checkbox class="example-margin" [(ngModel)]="checked3">Category 3</mat-checkbox></td>
-          </tr>
-          <tr>
-            <td><mat-checkbox class="example-margin" [(ngModel)]="checked4">Category 4</mat-checkbox></td>
-          </tr>
-          <tr>
-            <td><mat-checkbox class="example-margin" [(ngModel)]="checked5">Category 5</mat-checkbox></td>
-          </tr>
-          <tr>
-            <td></td>
-          </tr>
-      </table>
-      <!-- <table>
-        <tr *ngFor="let category of dataMap | keyvalue">
-          <td *ngFor="let element of category.value"><mat-checkbox (change)="someEvent(element.cat)">{{ element.name }}</mat-checkbox></td>
-        </tr>
-      </table> -->
-      <table>
-        <tr *ngFor="let element of dataList; index as i">
-          <td><mat-checkbox>{{ element.cat }} {{ element.lat }} {{ element.lng }}</mat-checkbox></td>
+        <tr *ngFor="let element of dataCategories; index as i">
+          <td><mat-checkbox (change)="toggleVisibility(element)">{{ element }}</mat-checkbox></td>
         </tr>
       </table>
     </mat-nav-list>

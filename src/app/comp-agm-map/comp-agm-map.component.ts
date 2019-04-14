@@ -12,7 +12,7 @@ import { google } from '@agm/core/services/google-maps-types';
 export class CompAgmMapComponent implements OnInit {
 
   @Input() mapDataList: any[];
-  markerList: customMarker[];
+  markerList: CustomMarker[];
   
   lat: number = 33.979984;
   lng: number = -84.0066296;
@@ -33,7 +33,7 @@ export class CompAgmMapComponent implements OnInit {
     console.log(this.mapDataList)
 
     this.mapDataList.forEach((element) => {
-      this.markerList.push(element);
+      this.markerList.push(new CustomMarker(element));
     })
     console.log(this.markerList);
   }
@@ -42,11 +42,24 @@ export class CompAgmMapComponent implements OnInit {
     //let bounds = new google.maps.LatLngBounds();
   }
 
+  toggleVisibility(category: String) {
+    this.markerList.forEach((element) => {
+      (element.category === category ? element.visible = !element.visible : element.visible = element.visible)
+    })
+  }
+
 }
 
-interface customMarker {
+class CustomMarker {
   category: String;
   lat: number;
   lng: number;
   visible: boolean;
+
+  constructor(Object) {
+    this.category = Object.cat;
+    this.lat = Object.lat;
+    this.lng = Object.lng;
+    this.visible = true;
+  }
 }
