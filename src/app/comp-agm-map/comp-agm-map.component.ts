@@ -16,17 +16,11 @@ export class CompAgmMapComponent implements OnInit {
   @Input() categories: String[];
   markerList: CustomMarker[];
   markerMap: Map<any, any>;
+  infoWindowVisible: boolean;
   
   lat: number = 33.979984;
   lng: number = -84.0066296;
   zoom: number = 12;
-  locationChosen = false;
-
-  addMarker(event) {
-    this.lat = event.coords.lat;
-    this.lng = event.coords.lng;
-    this.locationChosen = true;
-  }
 
   constructor() {
     this.markerList = new Array();
@@ -34,6 +28,8 @@ export class CompAgmMapComponent implements OnInit {
   }
 
   ngOnInit() {
+    this.infoWindowVisible = false;
+
     console.log(this.mapDataList)
 
     this.mapDataList.forEach((element) => {
@@ -56,14 +52,13 @@ export class CompAgmMapComponent implements OnInit {
   }
 
   toggleVisibility(category: String) {
-    // this.markerList.forEach((element) => {
-    //   (element.category === category ? element.visible = !element.visible : element.visible = element.visible)
-    // })
-
     for (let element of this.markerMap.get(category)) {
       element.visible = !element.visible;
       console.log(element.data);
     }
+    // if (this.infoWindowVisible == true) this.infoWindowVisible = false;
+    // console.log(this.infoWindowVisible);
+
   }
 
   clickEvent(dataPoint: Object) {
@@ -71,6 +66,11 @@ export class CompAgmMapComponent implements OnInit {
       dataPointDetail: dataPoint
     });
   }
+
+  // test() {
+  //   this.infoWindowVisible = true;
+  //   console.log(this.infoWindowVisible);
+  // }
 
 }
 
@@ -82,7 +82,7 @@ class CustomMarker {
   data: Object;
 
   constructor(Object) {
-    this.category = Object.cat;
+    this.category = Object.category;
     this.lat = Object.lat;
     this.lng = Object.lng;
     this.visible = true;

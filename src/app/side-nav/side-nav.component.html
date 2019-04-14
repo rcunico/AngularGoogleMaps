@@ -4,9 +4,10 @@
     fixedInViewport="false"
     [attr.role]="(isHandset$ | async) ? 'dialog' : 'navigation'"
     [mode]="(isHandset$ | async) ? 'over' : 'side'"
-    [opened]="!(isHandset$ | async)">
+    [opened]="!(isHandset$ | async)"
+    style="position:absolute; left:0px;">
     <div id="filters" [style.display]="isVisible ? 'block' : 'none'">
-        <mat-toolbar>Data</mat-toolbar>
+        <mat-toolbar>Data Filter Selection</mat-toolbar>
         <mat-nav-list>
           <table cellspacing="10">
             <tr *ngFor="let element of dataCategories; index as i">

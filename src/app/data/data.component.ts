@@ -2,6 +2,7 @@ import { Component, OnInit, Input } from '@angular/core';
 import { dashCaseToCamelCase } from '@angular/animations/browser/src/util';
 import { DebugContext } from '@angular/core/src/view';
 import { ArrayDataSource } from '@angular/cdk/collections';
+import dataJSON from '../../assets/data.json';
 
 @Component({
   selector: 'app-data',
@@ -17,7 +18,9 @@ export class DataComponent implements OnInit {
   categories: String[];
 
   constructor() {
-    this.data = JSON.parse(this.jsonString);
+    console.log(dataJSON[0].category);
+    // this.data = JSON.parse(this.jsonString);
+    this.data = dataJSON;
     this.dataMap = new Map<String, Array<any>>();
 
     this.createCategories();
@@ -28,7 +31,7 @@ export class DataComponent implements OnInit {
     let catSet = new Set<String>();
 
     for (let element of this.data) {
-      catSet.add(element.cat);
+      catSet.add(element.category);
     }
 
     this.categories = Array.from(catSet);
@@ -42,7 +45,7 @@ export class DataComponent implements OnInit {
 
     // Loop through each element in data array and push element to map element that corresponds to element's cat
     for (let element of this.data) {
-      this.dataMap.get(element.cat).push(element);
+      this.dataMap.get(element.category).push(element);
     }
   }
 
