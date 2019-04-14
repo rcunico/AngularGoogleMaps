@@ -15,8 +15,8 @@ export class SideNavComponent {
 
   @ViewChild(CompAgmMapComponent) agmMap: CompAgmMapComponent;
 
-  checked = false;
-
+  isVisible = true;
+  dataPoint: Object;
   data: DataComponent;
   dataList: any[];
   dataCategories: any[];
@@ -27,6 +27,7 @@ export class SideNavComponent {
     );
 
   constructor(private breakpointObserver: BreakpointObserver) {
+    this.dataPoint = {};
     this.data = new DataComponent();
     this.dataList = this.data.data;
     this.dataCategories = this.data.categories;
@@ -36,5 +37,13 @@ export class SideNavComponent {
   toggleVisibility(category: String) {
     console.log(category);
     this.agmMap.toggleVisibility(category);
+  }
+
+  printToConsole(dataPointData: {dataPointDetail: Object}) {
+    this.dataPoint = dataPointData.dataPointDetail;
+    this.isVisible = false;
+    Object.entries(dataPointData.dataPointDetail).forEach(entry => {
+      console.log(entry[0] + ": " + entry[1]);
+    })
   }
 }

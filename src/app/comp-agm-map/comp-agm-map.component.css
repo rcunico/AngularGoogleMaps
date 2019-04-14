@@ -1,3 +1,7 @@
 agm-map {
     height: 100vh;
 }
+
+.names:hover {
+    color: blue;
+}

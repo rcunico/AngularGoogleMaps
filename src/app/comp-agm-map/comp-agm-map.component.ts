@@ -1,4 +1,4 @@
-import { Component, OnInit, ViewChild, HostListener, Input } from '@angular/core';
+import { Component, OnInit, ViewChild, HostListener, Input, Output, EventEmitter } from '@angular/core';
 import { AgmMap} from '@agm/core';
 import { google } from '@agm/core/services/google-maps-types';
 
@@ -11,6 +11,7 @@ import { google } from '@agm/core/services/google-maps-types';
 })
 export class CompAgmMapComponent implements OnInit {
 
+  @Output() dataPointDetailsClicked = new EventEmitter<{dataPointDetail: Object}>();
   @Input() mapDataList: any[];
   @Input() categories: String[];
   markerList: CustomMarker[];
@@ -61,7 +62,14 @@ export class CompAgmMapComponent implements OnInit {
 
     for (let element of this.markerMap.get(category)) {
       element.visible = !element.visible;
+      console.log(element.data);
     }
+  }
+
+  clickEvent(dataPoint: Object) {
+    this.dataPointDetailsClicked.emit({
+      dataPointDetail: dataPoint
+    });
   }
 
 }
@@ -71,11 +79,13 @@ class CustomMarker {
   lat: number;
   lng: number;
   visible: boolean;
+  data: Object;
 
   constructor(Object) {
     this.category = Object.cat;
     this.lat = Object.lat;
     this.lng = Object.lng;
     this.visible = true;
+    this.data = Object;
   }
 }

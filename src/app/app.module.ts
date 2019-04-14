@@ -12,6 +12,7 @@ import { LayoutModule } from '@angular/cdk/layout';
 import { MatToolbarModule, MatButtonModule, MatSidenavModule, MatIconModule, MatListModule } from '@angular/material';
 import { MatCheckboxModule } from '@angular/material/checkbox';
 import { DataComponent } from './data/data.component';
+import { AgmSnazzyInfoWindowModule } from '@agm/snazzy-info-window';
 
 @NgModule({
   imports: [
@@ -28,7 +29,8 @@ import { DataComponent } from './data/data.component';
     MatSidenavModule,
     MatIconModule,
     MatListModule,
-    MatCheckboxModule
+    MatCheckboxModule,
+    AgmSnazzyInfoWindowModule
   ],
   providers: [],
   declarations: [ AppComponent, CompAgmMapComponent, SideNavComponent, DataComponent ],
