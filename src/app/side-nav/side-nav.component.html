@@ -1,11 +1,10 @@
 <mat-sidenav-container class="sidenav-container">
   <mat-sidenav 
-    #drawer class="sidenav" 
+    #drawer class="sidenav" id="drawer"
     fixedInViewport="false"
     [attr.role]="(isHandset$ | async) ? 'dialog' : 'navigation'"
     [mode]="(isHandset$ | async) ? 'over' : 'side'"
-    [opened]="!(isHandset$ | async)"
-    style="position:absolute; left:0px;">
+    [opened]="!(isHandset$ | async)">
     <div id="filters" [style.display]="isVisible ? 'block' : 'none'">
         <mat-toolbar>Data Filter Selection</mat-toolbar>
         <mat-nav-list>
@@ -32,22 +31,23 @@
     </mat-sidenav>
   <mat-sidenav-content>
     <mat-toolbar>
-        <button
-          type="button"
-          aria-label="Toggle sidenav"
-          mat-icon-button
-          (click)="drawer.toggle()">
-          <!-- *ngIf="isHandset$ | async"> -->
-          <mat-icon aria-label="Side nav toggle icon">menu</mat-icon>
-        </button>
-        <div id="title">GGC's Data on Display</div>
-      </mat-toolbar>
+      <button
+        type="button"
+        aria-label="Toggle sidenav"
+        mat-icon-button
+        (click)="drawer.toggle()">
+        <!-- *ngIf="isHandset$ | async"> -->
+        <mat-icon aria-label="Side nav toggle icon">menu</mat-icon>
+      </button>
+      <div id="title">GGC's Data on Display</div>
+    </mat-toolbar>
     <!-- Add Content Here -->
-    <app-comp-agm-map 
-      [mapDataList]='dataList'
-      [categories]='dataCategories'
-      (dataPointDetailsClicked)="printToConsole($event)">
-    </app-comp-agm-map>
-    <!-- <app-data></app-data> -->
+    <div class="content-container">
+      <app-comp-agm-map
+        [mapDataList]='dataList'
+        [categories]='dataCategories'
+        (dataPointDetailsClicked)="updateDetails($event)">
+      </app-comp-agm-map>
+    </div>
   </mat-sidenav-content>
 </mat-sidenav-container>

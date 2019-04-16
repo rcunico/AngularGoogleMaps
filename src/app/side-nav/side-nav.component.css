@@ -10,6 +10,10 @@
   background: inherit;
 }
 
+.mat-sidenav-content .mat-toolbar {
+  height: 10vh;
+}
+
 .mat-toolbar.mat-primary {
   position: sticky;
   top: 0;

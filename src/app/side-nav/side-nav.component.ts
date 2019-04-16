@@ -5,6 +5,7 @@ import { map } from 'rxjs/operators';
 import { DataComponent } from '../data/data.component';
 import { AgmMap } from '@agm/core';
 import { CompAgmMapComponent } from '../comp-agm-map/comp-agm-map.component';
+import { MatSidenav } from '@angular/material';
 
 @Component({
   selector: 'app-side-nav',
@@ -14,6 +15,7 @@ import { CompAgmMapComponent } from '../comp-agm-map/comp-agm-map.component';
 export class SideNavComponent {
 
   @ViewChild(CompAgmMapComponent) agmMap: CompAgmMapComponent;
+  @ViewChild('drawer') drawer: MatSidenav
 
   isVisible = true;
   dataPoint: Object;
@@ -39,11 +41,16 @@ export class SideNavComponent {
     this.agmMap.toggleVisibility(category);
   }
 
-  printToConsole(dataPointData: {dataPointDetail: Object}) {
+  updateDetails(dataPointData: {dataPointDetail: Object}) {
     this.dataPoint = dataPointData.dataPointDetail;
     this.isVisible = false;
     Object.entries(dataPointData.dataPointDetail).forEach(entry => {
       console.log(entry[0] + ": " + entry[1]);
     })
+
+    // Opens sidenav aka drawer on info window click
+    if (!this.drawer.opened) {
+      this.drawer.toggle();
+    }
   }
 }

@@ -167,5 +167,16 @@
     "pic_url": "https://i.imgur.com/uaJ0KLU.jpg",
     "thumb_url": "https://i.imgur.com/uaJ0KLU.jpg",
     "is_video": ""
+  },
+  {
+    "category": "Events",
+    "year_collected": 2019,
+    "name": "Event 10",
+    "description": "Description 10",
+    "lat": 33.987960,
+    "lng": -83.986696,
+    "pic_url": "https://i.imgur.com/uaJ0KLU.jpg",
+    "thumb_url": "https://i.imgur.com/uaJ0KLU.jpg",
+    "is_video": ""
   }
 ]
