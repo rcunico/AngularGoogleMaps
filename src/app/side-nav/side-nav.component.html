@@ -14,23 +14,32 @@
             </tr>
           </table>
         </mat-nav-list>
+        <div id="about" style="position:absolute; bottom: 0px; width: 90%; margin: auto; margin-bottom: 20px; text-align:center">
+          <p>More Information</p>
+          <button mat-raised-button>About this Project</button>
+        </div>
     </div>
     <div id="details" [style.display]="isVisible ? 'none' : 'block'">
       <mat-toolbar>
         <button mat-raised-button (click)="this.isVisible = !this.isVisible">Go Back</button>
       </mat-toolbar>
       <mat-nav-list>
-        <table cellspacing="10">
+        <table cellspacing="0" border="1">
             <tr *ngFor="let items of dataPoint | keyvalue">
               <td>{{ items.key }}</td>
-              <td>{{ items.value}}</td>
+              <td>
+                <div [ngSwitch]="isUrl(items.value)">
+                  <span *ngSwitchCase=true><a href="{{ items.value }}" target="_blank" style="color:darkblue">{{ items.value }}</a></span>
+                  <span *ngSwitchCase=false>{{items.value}}</span>
+                </div>
+              </td>
             </tr>
           </table>
       </mat-nav-list>
     </div>    
     </mat-sidenav>
   <mat-sidenav-content>
-    <mat-toolbar>
+    <mat-toolbar color="accent-light">
       <button
         type="button"
         aria-label="Toggle sidenav"

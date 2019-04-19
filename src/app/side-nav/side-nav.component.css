@@ -4,13 +4,16 @@
 
 .sidenav {
   width: 400px;
+  background: #00704a;
 }
 
 .sidenav .mat-toolbar {
-  background: inherit;
+  /* background: #77bc1f; */
+  height: 10vh;
 }
 
 .mat-sidenav-content .mat-toolbar {
+  background: #00704a;
   height: 10vh;
 }
 
@@ -30,4 +33,10 @@ table {
   table-layout: fixed;
   width: 100%;
   word-wrap: break-word;
+}
+
+#details .mat-nav-list table {
+  width: 95%;
+  margin: auto;
+  border: 2px solid black;
 }

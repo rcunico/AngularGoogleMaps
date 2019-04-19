@@ -53,4 +53,14 @@ export class SideNavComponent {
       this.drawer.toggle();
     }
   }
+
+  isUrl(value : any) {
+    let valueString: String = value += '';
+    if (valueString.substring(0,4) == 'http') {
+      return true;
+    }
+    else {
+      return false;
+    }
+  }
 }
