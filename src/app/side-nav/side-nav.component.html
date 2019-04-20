@@ -28,11 +28,19 @@
             <tr *ngFor="let items of dataPoint | keyvalue">
               <td>{{ items.key }}</td>
               <td>
+                <div *ngIf="isUrl(items.value);else notLink">
+                    <a id="mediaLink" href="{{ items.value }}" target="_blank">Link to Media</a>
+                  </div>
+                  <ng-template #notLink>
+                    {{ items.value }}
+                </ng-template>  
+              </td>
+              <!-- <td>
                 <div [ngSwitch]="isUrl(items.value)">
-                  <span *ngSwitchCase=true><a href="{{ items.value }}" target="_blank" style="color:darkblue">{{ items.value }}</a></span>
+                  <span *ngSwitchCase=true><a href="https://www.google.com" target="_blank">{{ items.value }}</a></span>
                   <span *ngSwitchCase=false>{{items.value}}</span>
                 </div>
-              </td>
+              </td> -->
             </tr>
           </table>
       </mat-nav-list>

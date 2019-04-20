@@ -40,3 +40,8 @@ table {
   margin: auto;
   border: 2px solid black;
 }
+
+#mediaLink {
+  text-decoration: underline;
+  color: greenyellow
+}
