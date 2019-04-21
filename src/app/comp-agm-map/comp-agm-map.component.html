@@ -1,11 +1,12 @@
 <!-- this creates a google map on the page with the given lat/lng from -->
 <!-- the component as the initial center of the map: -->
 <agm-map [zoom]="zoom" [latitude]="lat" [longitude]="lng">
-  <agm-marker *ngFor="let mark of markerList" [latitude]="mark.lat" [longitude]="mark.lng" [visible]="mark.visible">
-    <agm-snazzy-info-window [maxWidth]="200" [closeWhenOthersOpen]="true" backgroundColor="#383838">
-      <ng-template>
-        <span class="names" (click)="clickEvent(mark.data)"> {{ mark.data.name }} </span> 
-      </ng-template>
-    </agm-snazzy-info-window>
-  </agm-marker>  
+    <agm-marker *ngFor="let mark of markerList" [latitude]="mark.lat" [longitude]="mark.lng" 
+      [visible]="mark.visible" [iconUrl]="this.redMarker">
+      <agm-snazzy-info-window [maxWidth]="200" [closeWhenOthersOpen]="true" backgroundColor="#383838">
+        <ng-template>
+          <span class="names" (click)="clickEvent(mark.data)"> {{ mark.data.Name }} </span> 
+        </ng-template>
+        </agm-snazzy-info-window>
+      </agm-marker>
 </agm-map>

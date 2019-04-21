@@ -17,6 +17,7 @@ export class CompAgmMapComponent implements OnInit {
   markerList: CustomMarker[];
   markerMap: Map<any, any>;
   infoWindowVisible: boolean;
+  redMarker: any;
   
   lat: number = 33.979984;
   lng: number = -84.0066296;
@@ -29,6 +30,14 @@ export class CompAgmMapComponent implements OnInit {
 
   ngOnInit() {
     this.infoWindowVisible = false;
+
+    this.redMarker = {
+      url: 'http://www.clker.com/cliparts/Q/l/D/8/k/m/red-circle-icon-hi.png',
+      scaledSize: {
+        width: 20,
+        height: 20
+      }
+    }
 
     console.log(this.mapDataList)
 
@@ -82,9 +91,9 @@ class CustomMarker {
   data: Object;
 
   constructor(Object) {
-    this.category = Object.category;
-    this.lat = Object.lat;
-    this.lng = Object.lng;
+    this.category = Object.Category;
+    this.lat = Object.Latitude;
+    this.lng = Object.Longitude;
     this.visible = true;
     this.data = Object;
   }

@@ -3,6 +3,7 @@ import { dashCaseToCamelCase } from '@angular/animations/browser/src/util';
 import { DebugContext } from '@angular/core/src/view';
 import { ArrayDataSource } from '@angular/cdk/collections';
 import dataJSON from '../../assets/data.json';
+import { HttpClient } from '@angular/common/http';
 
 @Component({
   selector: 'app-data',
@@ -12,13 +13,11 @@ import dataJSON from '../../assets/data.json';
 export class DataComponent implements OnInit {
 
   data: any[];
-  jsonString = '[{"cat": "place", "lat": 33.00, "lng": -84.00},{"cat": "person", "lat": 33.25, "lng": -84.25},{"cat": "place", "lat": 33.50, "lng": -84.50},{"cat": "person", "lat": 33.75, "lng": -84.75}]';
-
   dataMap: Map<any, any>;
   categories: String[];
 
   constructor() {
-    console.log(dataJSON[0].category);
+    console.log(dataJSON[0].Category);
     // this.data = JSON.parse(this.jsonString);
     this.data = dataJSON;
     this.dataMap = new Map<String, Array<any>>();
@@ -31,7 +30,7 @@ export class DataComponent implements OnInit {
     let catSet = new Set<String>();
 
     for (let element of this.data) {
-      catSet.add(element.category);
+      catSet.add(element.Category);
     }
 
     this.categories = Array.from(catSet);
@@ -45,7 +44,7 @@ export class DataComponent implements OnInit {
 
     // Loop through each element in data array and push element to map element that corresponds to element's cat
     for (let element of this.data) {
-      this.dataMap.get(element.category).push(element);
+      this.dataMap.get(element.Category).push(element);
     }
   }
 

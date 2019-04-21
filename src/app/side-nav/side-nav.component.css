@@ -28,14 +28,14 @@
 }
 
 table {
-  text-align: center;
+  text-align: left;
   margin: auto;
   table-layout: fixed;
-  width: 100%;
   word-wrap: break-word;
 }
 
 #details .mat-nav-list table {
+  text-align: center;
   width: 95%;
   margin: auto;
   border: 2px solid black;

@@ -13,6 +13,8 @@ import { MatToolbarModule, MatButtonModule, MatSidenavModule, MatIconModule, Mat
 import { MatCheckboxModule } from '@angular/material/checkbox';
 import { DataComponent } from './data/data.component';
 import { AgmSnazzyInfoWindowModule } from '@agm/snazzy-info-window';
+import { AgmJsMarkerClustererModule } from '@agm/js-marker-clusterer';
+import { MatTooltipModule } from '@angular/material/tooltip';
 
 @NgModule({
   imports: [
@@ -30,7 +32,9 @@ import { AgmSnazzyInfoWindowModule } from '@agm/snazzy-info-window';
     MatIconModule,
     MatListModule,
     MatCheckboxModule,
-    AgmSnazzyInfoWindowModule
+    AgmSnazzyInfoWindowModule,
+    AgmJsMarkerClustererModule,
+    MatTooltipModule
   ],
   providers: [],
   declarations: [ AppComponent, CompAgmMapComponent, SideNavComponent, DataComponent ],

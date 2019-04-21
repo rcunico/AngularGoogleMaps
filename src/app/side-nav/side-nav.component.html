@@ -16,7 +16,7 @@
         </mat-nav-list>
         <div id="about" style="position:absolute; bottom: 0px; width: 90%; margin: auto; margin-bottom: 20px; text-align:center">
           <p>More Information</p>
-          <button mat-raised-button>About this Project</button>
+          <a mat-raised-button href="https://github.com/GGC-SD/Shadowfax" target="_blank">About this Project</a>
         </div>
     </div>
     <div id="details" [style.display]="isVisible ? 'none' : 'block'">
@@ -30,8 +30,8 @@
             <th>Value</th>
           </tr>
           <tr *ngFor="let items of dataPoint | keyvalue">
-            <td>{{ items.key }}</td>
-            <td>
+            <td *ngIf="!!items.value">{{ items.key }}</td>
+            <td *ngIf="!!items.value">
               <div *ngIf="isUrl(items.value);else notLink">
                   <a id="mediaLink" href="{{ items.value }}" target="_blank"><img src="{{ items.value }}" alt="Link to Media" width="100" height="100"></a>
                 </div>
