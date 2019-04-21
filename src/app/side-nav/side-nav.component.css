@@ -38,7 +38,21 @@ table {
   text-align: center;
   width: 95%;
   margin: auto;
-  border: 2px solid black;
+  /* border: 2px solid black; */
+  box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2);
+}
+
+#details .mat-nav-list table tr {
+  border: 2px solid grey;
+}
+
+#details .mat-nav-list table tr td {
+  padding: 10px;
+}
+
+#details .mat-nav-list table tr th {
+  font-size: 26px;
+  padding: 10px;
 }
 
 #mediaLink {
