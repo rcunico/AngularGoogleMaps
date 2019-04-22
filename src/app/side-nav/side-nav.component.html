@@ -15,8 +15,7 @@
           </table>
         </mat-nav-list>
         <div id="about" style="position:absolute; bottom: 0px; width: 90%; margin: auto; margin-bottom: 20px; text-align:center">
-          <p>More Information</p>
-          <a mat-raised-button href="https://github.com/GGC-SD/Shadowfax" target="_blank">About this Project</a>
+          <a mat-raised-button (click)="openDialog()">About this Project</a>
         </div>
     </div>
     <div id="details" [style.display]="isVisible ? 'none' : 'block'">

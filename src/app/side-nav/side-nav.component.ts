@@ -5,7 +5,8 @@ import { map } from 'rxjs/operators';
 import { DataComponent } from '../data/data.component';
 import { AgmMap } from '@agm/core';
 import { CompAgmMapComponent } from '../comp-agm-map/comp-agm-map.component';
-import { MatSidenav } from '@angular/material';
+import { MatSidenav, MatDialog } from '@angular/material';
+import { DialogComponent } from '../dialog/dialog.component';
 
 @Component({
   selector: 'app-side-nav',
@@ -28,7 +29,7 @@ export class SideNavComponent {
       map(result => result.matches)
     );
 
-  constructor(private breakpointObserver: BreakpointObserver) {
+  constructor(private breakpointObserver: BreakpointObserver, public dialog: MatDialog) {
     this.dataPoint = {};
     this.data = new DataComponent();
     this.dataList = this.data.data;
@@ -62,5 +63,13 @@ export class SideNavComponent {
     else {
       return false;
     }
+  }
+
+  openDialog() {
+    this.dialog.open(DialogComponent);
+
+    // dialogRef.afterClosed().subscribe(result => {
+    //   console.log(`Dialog result: ${result}`);
+    // });
   }
 }

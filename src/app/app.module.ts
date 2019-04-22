@@ -9,12 +9,13 @@ import { CompAgmMapComponent } from './comp-agm-map/comp-agm-map.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { SideNavComponent } from './side-nav/side-nav.component';
 import { LayoutModule } from '@angular/cdk/layout';
-import { MatToolbarModule, MatButtonModule, MatSidenavModule, MatIconModule, MatListModule } from '@angular/material';
+import { MatToolbarModule, MatButtonModule, MatSidenavModule, MatIconModule, MatListModule, MatDialogModule } from '@angular/material';
 import { MatCheckboxModule } from '@angular/material/checkbox';
 import { DataComponent } from './data/data.component';
 import { AgmSnazzyInfoWindowModule } from '@agm/snazzy-info-window';
 import { AgmJsMarkerClustererModule } from '@agm/js-marker-clusterer';
 import { MatTooltipModule } from '@angular/material/tooltip';
+import { DialogComponent } from './dialog/dialog.component';
 
 @NgModule({
   imports: [
@@ -34,10 +35,12 @@ import { MatTooltipModule } from '@angular/material/tooltip';
     MatCheckboxModule,
     AgmSnazzyInfoWindowModule,
     AgmJsMarkerClustererModule,
-    MatTooltipModule
+    MatTooltipModule,
+    MatDialogModule
   ],
   providers: [],
-  declarations: [ AppComponent, CompAgmMapComponent, SideNavComponent, DataComponent ],
-  bootstrap: [ AppComponent ]
+  declarations: [ AppComponent, CompAgmMapComponent, SideNavComponent, DataComponent, DialogComponent ],
+  bootstrap: [ AppComponent ],
+  entryComponents: [ DialogComponent ]
 })
 export class AppModule {}
