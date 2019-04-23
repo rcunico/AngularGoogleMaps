@@ -8,8 +8,12 @@
 }
 
 .sidenav .mat-toolbar {
-  /* background: #77bc1f; */
   height: 10vh;
+}
+
+#sideToolbar {
+  text-align: center;
+  width: 100%;
 }
 
 .mat-sidenav-content .mat-toolbar {

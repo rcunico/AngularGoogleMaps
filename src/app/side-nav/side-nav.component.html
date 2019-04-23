@@ -6,7 +6,11 @@
     [mode]="(isHandset$ | async) ? 'over' : 'side'"
     [opened]="!(isHandset$ | async)">
     <div id="filters" [style.display]="isVisible ? 'block' : 'none'">
-        <mat-toolbar>Data Filter Selection</mat-toolbar>
+        <mat-toolbar>
+          <div id="sideToolbar">
+            Data Filter Selection
+          </div>
+        </mat-toolbar>
         <mat-nav-list>
           <table cellspacing="10">
             <tr *ngFor="let element of dataCategories; index as i">
